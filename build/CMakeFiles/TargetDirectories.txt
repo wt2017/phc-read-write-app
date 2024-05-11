@@ -1,0 +1,3 @@
+/home/wyou/data/partition1/projects/phc-read-write-app/build/CMakeFiles/phc_read_write_app.dir
+/home/wyou/data/partition1/projects/phc-read-write-app/build/CMakeFiles/edit_cache.dir
+/home/wyou/data/partition1/projects/phc-read-write-app/build/CMakeFiles/rebuild_cache.dir

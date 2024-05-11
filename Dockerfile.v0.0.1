@@ -1,0 +1,5 @@
+FROM docker.io/library/fedora:latest
+
+RUN mkdir wyou
+WORKDIR /wyou
+COPY build/phc_read_write_app .

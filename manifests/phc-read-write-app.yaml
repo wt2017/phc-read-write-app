@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: phc-read-write-app
+ namespace: default
+spec:
+ containers:
+ - name: phc-read-write-app
+   image: localhost/phc-read-write-app:v0.0.1
+   imagePullPolicy: Never
+   command: [ "/bin/bash", "-c", "--" ]       # You need to run some task inside a container to keep it running
+   args: [ "while true; do sleep 10; done;" ]
+ restartPolicy: Never
+ tolerations:
+ - key: "key"
+   operator: "Exists"
+   effect: "NoSchedule"
