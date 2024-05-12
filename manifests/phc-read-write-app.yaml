@@ -1,17 +1,31 @@
 apiVersion: v1
 kind: Pod
 metadata:
- name: phc-read-write-app
- namespace: default
+  name: phc-read-write-app
+  namespace: default
 spec:
- containers:
- - name: phc-read-write-app
-   image: localhost/phc-read-write-app:v0.0.1
-   imagePullPolicy: Never
-   command: [ "/bin/bash", "-c", "--" ]       # You need to run some task inside a container to keep it running
-   args: [ "while true; do sleep 10; done;" ]
- restartPolicy: Never
- tolerations:
- - key: "key"
-   operator: "Exists"
-   effect: "NoSchedule"
+  containers:
+  - name: phc-read-write-app
+    image: localhost/phc-read-write-app:v0.0.1
+    imagePullPolicy: Never
+    command: [ "/bin/bash", "-c", "--" ]
+    args: [ "while true; do sleep 10; done;" ]
+    securityContext:
+      privileged: true
+      runAsUser: 0
+      capabilities:
+        add: ["SYS_TIME"]
+    #securityContext:
+      #runAsNonRoot: true
+      #runAsUser: 1000
+      #capabilities:
+        #drop: ["ALL"]
+        #add: ["SYS_TIME"]
+    resources:
+      limits:
+        squat.ai/ptp: 1
+  restartPolicy: Never
+  tolerations:
+  - key: "key"
+    operator: "Exists"
+    effect: "NoSchedule"
