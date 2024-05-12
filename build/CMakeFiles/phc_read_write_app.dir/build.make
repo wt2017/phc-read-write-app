@@ -92,6 +92,7 @@ phc_read_write_app_EXTERNAL_OBJECTS =
 
 phc_read_write_app: CMakeFiles/phc_read_write_app.dir/src/main.cpp.o
 phc_read_write_app: CMakeFiles/phc_read_write_app.dir/build.make
+phc_read_write_app: /usr/lib64/libcap.so
 phc_read_write_app: CMakeFiles/phc_read_write_app.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/wyou/data/partition1/projects/phc-read-write-app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable phc_read_write_app"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/phc_read_write_app.dir/link.txt --verbose=$(VERBOSE)
