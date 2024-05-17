@@ -63,7 +63,7 @@ int main() {
     printProcessCapability();
 
     // Open /dev/ptp1
-    int ptp1_fd = open("/dev/ptp1", O_RDONLY);
+    int ptp1_fd = open("/dev/ptp1", O_RDONLY|O_WRONLY);
     if (ptp1_fd == -1) {
         std::cerr << "Failed to open /dev/ptp1 device" << std::endl;
         return 1;
@@ -83,16 +83,16 @@ int main() {
     // Print time
     std::cout << "Current time: " << timeSpec.tv_sec << "." << timeSpec.tv_nsec << std::endl;
 
+#if 0
     // Add n second to timeSpec
     timeSpec.tv_sec += 10;
-
     // Set time using clock_settime
     if (clock_settime(clockId, &timeSpec) != 0) {
         std::cerr << "Failed to set time using clock_settime. Error: " << errno << std::endl;
         close(ptp1_fd);
         return 1;
     }
-
+#endif
     // Get time using clock_gettime
     if (clock_gettime(clockId, &timeSpec) != 0) {
         std::cerr << "Failed to get time using clock_gettime" << std::endl;
